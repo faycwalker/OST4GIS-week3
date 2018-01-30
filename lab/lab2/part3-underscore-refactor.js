@@ -26,10 +26,16 @@
 
   // Mock user input
   // Filter out according to these zip codes:
-  var acceptedZipcodes = [19106, 19107, 19124, 19111, 19118];
-  // Filter according to enrollment that is greater than this variable:
-  var minEnrollment = 300;
+var data = schools
 
+  var acceptedZipcodes = _.filter (data, function (num) {
+    return num === [19106, 19107, 19124, 19111, 19118];
+  });
+
+  // Filter according to enrollment that is greater than this variable:
+  var minEnrollment = _.filter (data, function(num){
+   return num[3] > 300;
+ });
 
   // clean data
   for (var i = 0; i < schools.length - 1; i++) {

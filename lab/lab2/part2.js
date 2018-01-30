@@ -36,12 +36,11 @@ Calculate the value by using _.countBy and set your answer to variable "largeSta
 var data = bikeArrayClean;
 
 var largeStationList;
-largeStationList = _.filter ([bikeArrayClean][3],  function(num){
-  return num > 20;
+largeStationList = _.filter (data,  function(num){
+  return num[3] > 20;
 });
-console.log (largeStationList);
 
 var largeStationCount;
-largeStationCount = _.countyBy ([bikeArrayClean], function (num) {
-  return num > 20 ? 'More than 20';
+largeStationCount = _.countBy (data, function (num) {
+  return num [3] > 20
 });

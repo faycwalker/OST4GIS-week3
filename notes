@@ -1,0 +1,26 @@
+NOTES
+HOW TO CORRECTLY SYNTAX FUNCTION
+DIFFERENCE BETWEEN CONSOLE.LOG AND RETURN
+
+var obj = healthCenters [0]
+for (key in obj) {console.log(obj[key])}
+&&	and	(x < 10 && y > 1) is true	Try it »
+||	or	(x === 5 || y === 5) is false	Try it »
+!	not
+
+to access objects you can do .object or ["object"] instead of an array
+(variable that stores a key)
+instanceof
+typeof
+CLEAN DATA SO THAT strings, .toUpperCase().indexOf('K')
+
+if (typeof schools[i].GRADE_ORG === 'number') {
+  schools[i].HAS_KINDERGARTEN = schools[i].GRADE_LEVEL < 1;
+  schools[i].HAS_ELEMENTARY = 1 < schools[i].GRADE_LEVEL < 6;
+  schools[i].HAS_MIDDLE_SCHOOL = 5 < schools[i].GRADE_LEVEL < 9;
+  schools[i].HAS_HIGH_SCHOOL = 8 < schools[i].GRADE_LEVEL < 13;
+} else {
+  schools[i].HAS_KINDERGARTEN = schools[i].GRADE_LEVEL.toUpperCase().indexOf('K') >= 0;
+  schools[i].HAS_ELEMENTARY = schools[i].GRADE_LEVEL.toUpperCase().indexOf('ELEM') >= 0;
+  schools[i].HAS_MIDDLE_SCHOOL = schools[i].GRADE_LEVEL.toUpperCase().indexOf('MID') >= 0;
+  schools[i].HAS_HIGH_SCHOOL = schools[i].GRADE_LEVEL.toUpperCase().indexOf('HIGH') >= 0;

@@ -17,6 +17,15 @@ We're especially interested in number 4: number of bike share docks at the stati
 Using underscore functions, generate a list of all bike share docks that are greater than 20. One
 way to do this is by using _.filter, but you can try other solutions as well. Set your answer to
 variable "largeStationList".
+*/
+
+var largeStationList;
+largeStationList = _.filter ([bikeArrayClean][3],  function(num){
+  return num > 20;
+});
+console.log (largeStationList);
+
+/*
 
 ## Task 2
 
@@ -27,5 +36,12 @@ Calculate the value by using _.countBy and set your answer to variable "largeSta
 var data = bikeArrayClean;
 
 var largeStationList;
+largeStationList = _.filter ([bikeArrayClean][3],  function(num){
+  return num > 20;
+});
+console.log (largeStationList);
 
 var largeStationCount;
+largeStationCount = _.countyBy ([bikeArrayClean], function (num) {
+  return num > 20 ? 'More than 20';
+});

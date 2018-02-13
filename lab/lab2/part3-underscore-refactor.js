@@ -26,29 +26,59 @@
 
   // Mock user input
   // Filter out according to these zip codes:
-var data = schools
 
-  var acceptedZipcodes = _.filter (data, function (num) {
-    return num === [19106, 19107, 19124, 19111, 19118];
+  var acceptedZipcodes = _.filter (schools, function (num) {
+    return num [11] === [19106, 19107, 19124, 19111, 19118];
   });
 
   // Filter according to enrollment that is greater than this variable:
-  var minEnrollment = _.filter (data, function(num){
-   return num[3] > 300;
+  var minEnrollment = _.filter (schools, function(num){
+   return num[16] > 300;
  });
 
   // clean data
   for (var i = 0; i < schools.length - 1; i++) {
     // If we have '19104 - 1234', splitting and taking the first (0th) element
     // as an integer should yield a zip in the format above
+
     if (typeof schools[i].ZIPCODE === 'string') {
       split = schools[i].ZIPCODE.split(' ');
       normalized_zip = parseInt(split[0]);
       schools[i].ZIPCODE = normalized_zip;
     }
+  return num
+}
+)
 
+var parseZip;
+parseZip = _.each (schools, function (school) {
+  if (typeof school.ZIPCODE === 'string') {
+    split = school.ZIPCODE.split(' ');
+    normalized_zip = parseInt(split[0]);
+    schools.ZIPCODE = normalized_zip;
+  }
+}
+)
+console.log (parseZip);
+
+//var even = _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+//=> 2
     // Check out the use of typeof here — this was not a contrived example.
     // Someone actually messed up the data entry
+    var gradeRange = _.contains (list,value, ) {
+      return true;
+  }
+  else {
+    return false;
+  }
+};
+
+    if (_.contains(_.range(minNum, maxNum), num)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
     if (typeof schools[i].GRADE_ORG === 'number') {  // if number
       schools[i].HAS_KINDERGARTEN = schools[i].GRADE_LEVEL < 1;
       schools[i].HAS_ELEMENTARY = 1 < schools[i].GRADE_LEVEL < 6;
@@ -64,7 +94,30 @@ var data = schools
 
   // filter data
   var filtered_data = [];
+  filtered_data = _.each (schools, function (cleanData){
+    isOpen = schools[i].ACTIVE.toUpperCase() == 'OPEN';
+    isPublic = (schools[i].TYPE.toUpperCase() !== 'CHARTER' ||
+                schools[i].TYPE.toUpperCase() !== 'PRIVATE');
+    isSchool = (schools[i].HAS_KINDERGARTEN ||
+                schools[i].HAS_ELEMENTARY ||
+                schools[i].HAS_MIDDLE_SCHOOL ||
+                schools[i].HAS_HIGH_SCHOOL);
+    meetsMinimumEnrollment = schools[i].ENROLLMENT > minEnrollment;
+    meetsZipCondition = acceptedZipcodes.indexOf(schools[i].ZIPCODE) >= 0;
+    filter_condition = (isOpen &&
+                        isSchool &&
+                        meetsMinimumEnrollment &&
+                        !meetsZipCondition);
+
+    if (filter_condition) {
+      filtered_data.push(schools[i]);
+    } else {
+      filtered_out.push(schools[i]);
+    }
+  }
+  })
   var filtered_out = [];
+  filtered_out = _.reject ()
   for (var i = 0; i < schools.length - 1; i++) {
     isOpen = schools[i].ACTIVE.toUpperCase() == 'OPEN';
     isPublic = (schools[i].TYPE.toUpperCase() !== 'CHARTER' ||
@@ -91,16 +144,19 @@ var data = schools
 
   // main loop
   var color;
-  for (var i = 0; i < filtered_data.length - 1; i++) {
-    isOpen = filtered_data[i].ACTIVE.toUpperCase() == 'OPEN';
-    isPublic = (filtered_data[i].TYPE.toUpperCase() !== 'CHARTER' ||
-                filtered_data[i].TYPE.toUpperCase() !== 'PRIVATE');
-    meetsMinimumEnrollment = filtered_data[i].ENROLLMENT > minEnrollment;
+  color = _.each (filtered_data, function (cleanData) {
+    isOpen = cleanData.ACTIVE.toUpperCase() == 'OPEN';
+    isPublic = (cleanData.TYPE.toUpperCase() !== 'CHARTER' ||
+                cleanData.TYPE.toUpperCase() !== 'PRIVATE');
+    meetsMinimumEnrollment = cleanData.ENROLLMENT > minEnrollment;
+}
+)
+console.log (color)
 
     // Constructing the styling  options for our map
-    if (filtered_data[i].HAS_HIGH_SCHOOL){
+    if (cleanData.HAS_HIGH_SCHOOL){
       color = '#0000FF';
-    } else if (filtered_data[i].HAS_MIDDLE_SCHOOL) {
+    } else if (cleanData.HAS_MIDDLE_SCHOOL) {
       color = '#00FF00';
     } else {
       color = '##FF0000';
